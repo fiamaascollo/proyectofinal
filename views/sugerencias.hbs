@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="/css/navegables.css">
+
+<div class="formulario">
+<div class="container text-center m-5 fondo">
+    <hr>
+    <h1>
+        Formulario de sugerencias
+    </h1>
+    <hr>
+</div>
+
+<div class="container m-5">
+    <form action="/sugerencias" method="post">
+        <div class="mb-3">
+            <label for="sugerencia" class="form-label">Sugerencia</label>
+            <input type="text" class="form-control" id="sugerencia" name="sugerencia" required>
+        </div>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+        </div>
+        <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-danger">Enviar</button>
+        </div>
+    </form>
+</div>
+
+<div class="container text-center m-5">
+    <hr>
+    <h1>
+        Lista de sugerencias
+    </h1>
+    <hr>
+</div>
+
+<table class="table table-striped container" id="mitabla">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Sugerencia</th>
+        <th scope="col">Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each datos}}
+        <tr>
+        <th scope="row">{{ idSugerencia }}</th>
+        <td>{{ sugerencia }}</td>
+        <td>{{ descripcion }}</td>
+        <td>
+            <a href="javascript:void(0);" class="btn btn-danger delete" data-idSugerencia="{{ idSugerencia }}">Eliminar</a>
+            <a href="javascript:void(0);" class="btn btn-primary edit" data-idSugerencia="{{ idSugerencia }}" data-sugerencia="{{ sugerencia }}" data-descripcion="{{ descripcion }}">Editar</a>
+        </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+{{!-- Modal para el Delete --}}
+<form action="/delete" method="post">
+    <div class="modal" id="DeleteModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Sugerencia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro de eliminar esta sugerencia?</p>
+            </div>
+            <div class="modal-footer">
+                <input type="number" name="idSugerencia" id="idSugerencia" class="idSugerencia" required>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{!-- Modal para el Update --}}
+
+<form action="/update" method="post">
+    <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar sugerencia</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="sugerencia" class="col-form-label">Sugerencia</label>
+                <input type="text" class="form-control nombre" id="sugerencia" name="sugerencia">
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="col-form-label">Descripcion:</label>
+                <textarea class="form-control descripcion" id="descripcion" name="descripcion"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="number" name="idSugerencia" id="idSugerencia" class="idSugerencia">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+{{!-- Función para tomar los datos del Modal  --}}
+
+<script>
+    
+    $(document).ready(function() {
+        {{!-- Modal del delete --}}
+        $('#mitabla').on('click', '.delete', function (){
+            let idSugerencia = $(this).data('idSugerencia');
+            $('#DeleteModal').modal('show')
+        })
+        {{!-- Modal del Edit --}}
+        $('#mitabla').on('click', '.edit', function (){
+            let idSugerencia = $(this).data('idSugerencia');
+            let sugerencia = $(this).data('sugerencia');
+            let descripcion = $(this).data('descripcion')
+            $('#EditModal').modal('show');
+            $('.sugerencia').val(sugerencia);
+            $('.descripcion').val(descripcion);
+        })
+    })
+    
+</script>

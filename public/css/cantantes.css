@@ -1,0 +1,58 @@
+* {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: black;
+}
+
+body {
+    background-image: url(../img/fondo.png);
+    background-position: cover;
+    background-repeat: repeat;
+    
+}
+
+.titulo {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.uno {
+    padding-left: 5rem;
+    padding-bottom: 2rem;
+    width: 40rem;
+    height: 50rem;
+}
+
+.dos {
+    padding-left: 8rem;
+    width: 50rem;
+    height: 30rem;
+}
+
+.tres {
+    padding-left: 7rem;
+    width: 40rem;
+    height: 40rem;
+}
+
+.cuatro {
+    padding-left: 8rem;
+    width: 50rem;
+    height: 40rem;
+}
+
+.cinco {
+    padding-top: 3rem;
+    padding-left: 25rem;
+    padding-right: 25rem;
+    width: 100rem;
+    height: 40rem;
+}
+
+img {
+    transition: 0.5s;
+    object-fit: cover;
+}
+
+img:hover {
+    transform: scale(1.1);
+}

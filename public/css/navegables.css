@@ -1,0 +1,32 @@
+* {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    color: black;
+}
+
+body {
+    background-image: url(../img/fondo.png);
+    background-position: cover;
+    background-repeat: repeat;
+}
+
+.carousel-inner {
+    padding-left: 20rem;
+    padding-bottom: 4rem;
+    padding-right: 20rem;
+}
+
+.carousel-inner img {
+    width: 55rem;
+}
+
+.nombre {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 3rem;
+} 

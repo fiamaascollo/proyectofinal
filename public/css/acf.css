@@ -1,0 +1,32 @@
+* {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: black;
+}
+
+body {
+    background-image: url(../img/fondo.png);
+    background-position: cover;
+    background-repeat: repeat;
+    
+}
+
+.acf {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    width: 100%;
+   
+}
+
+.biografia {
+    width: 70%;
+    margin-right: 4rem; 
+} 
+
+.retrato {
+    width: 90%;
+    height: 50%;
+    padding-left: 2rem;
+}  
