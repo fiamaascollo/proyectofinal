@@ -38,16 +38,16 @@ hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 //Conexion a la base de datos
 const conexion =mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     port: process.env.DBPORT
 }); 
 
 conexion.connect((err) => {
     if(err) throw err;
-    console.log(`Conectado a la Database ${process.env.database}`);
+    console.log(`Conectado a la Database ${process.env.DB_NAME}`);
 });   
 
 //Rutas de la aplicacion
