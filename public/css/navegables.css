@@ -30,3 +30,7 @@ body {
     flex-direction: column;
     padding-left: 3rem;
 } 
+
+p {
+    text-align: center;
+}
