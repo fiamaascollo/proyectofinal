@@ -45,10 +45,10 @@ const conexion =mysql.createConnection({
     port: process.env.DBPORT
 }); 
 
-conexion.connect((err) => {
+/* conexion.connect((err) => {
     if(err) throw err;
     console.log(`Conectado a la Database ${process.env.DB_NAME}`);
-});   
+});  */  
 
 //Rutas de la aplicacion
 app.get('/', (req, res) => {
@@ -182,11 +182,9 @@ app.post('/update', (req, res) => {
 
     console.log(sql);
 
-    //res.send(sql);
-
     conexion.query(sql, function(err, result){
         if (err) throw err;
-            console.log('Datos actualizados: ' + result.affectedRows);
+            /* console.log('Datos actualizados: ' + result.affectedRows); */
             res.render('sugerencias')
     }) 
 })
