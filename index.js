@@ -16,14 +16,6 @@ const PORT = process.env.PORT || 9000;
 
 console.log(PORT);
 
-const dbConfig = {
-    host: process.env.DB_HOST ,
-    port: process.env.DB_PORT ,
-    user: process.env.DB_USER ,
-    password: process.env.DB_PASSWORD ,
-    database: process.env.DB_NAME 
-};
-
 //Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -48,7 +40,7 @@ hbs.registerPartials(path.join(__dirname, 'views/partials'));
 conexion.connect((err) => {
     if(err) throw err;
     console.log(`Conectado a la Database ${process.env.DB_NAME}`);
-});  */  
+}); */  
 
 //Rutas de la aplicacion
 app.get('/', (req, res) => {
@@ -76,9 +68,9 @@ app.get('/sugerencias', (req, res) => {
             res.render('sugerencias', {
                 datos: result
             })
-    })  */
-
-    res.render('sugerencias')
+    })  
+ */
+    res.render('sugerencias') 
 })
 
 app.get('/cerati', (req, res) => {
@@ -133,11 +125,11 @@ app.post('/contacto', (req, res) => {
                 //En esta instancia le mandamos el email al cliente
                 envioMail().catch(console.error);
                 res.render('contacto')
-        })  */
+        })  */ 
 
         res.json({
             prueba: 'Probando deploy sin conexion a la Database'
-        })
+        }) 
 })
 
 app.post('/sugerencias', (req, res) => {
@@ -159,7 +151,7 @@ app.post('/sugerencias', (req, res) => {
                 res.redirect('/sugerencias') //Es la página a donde se va a enviar al cliente después de que envíe los datos//
         }) */ 
 
-        res.render('sinDatos')
+        res.render('sinDatos') 
 })
 
 app.post('/delete', (req, res) => {
@@ -172,11 +164,11 @@ app.post('/delete', (req, res) => {
         if (err) throw err;
             console.log('Datos eliminados: ' + result.affectedRows);
             res.render('sugerencias')
-    })  */ 
+    })   */
 
     res.json({
         prueba: 'Probando deploy sin conexion a la Database'
-    })
+    }) 
 })
 
 app.post('/update', (req, res) => {
@@ -198,7 +190,7 @@ app.post('/update', (req, res) => {
         if (err) throw err;
             console.log('Datos actualizados: ' + result.affectedRows); 
             res.render('sugerencias')
-    }) */
+    })  */
 })
 
 //Servidor a la escucha de las peticiones
