@@ -35,6 +35,10 @@ p {
     text-align: center;
 }
 
+.sugerencia {
+    font-size: 1.2rem;
+}
+
 .relleno {
     padding-left: 5rem;
 }
