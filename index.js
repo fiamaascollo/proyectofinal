@@ -37,7 +37,7 @@ app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 //Conexion a la base de datos
-const conexion =mysql.createConnection({
+/* const conexion =mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -45,7 +45,7 @@ const conexion =mysql.createConnection({
     port: process.env.DBPORT
 }); 
 
-/* conexion.connect((err) => {
+conexion.connect((err) => {
     if(err) throw err;
     console.log(`Conectado a la Database ${process.env.DB_NAME}`);
 });  */  
@@ -69,14 +69,16 @@ app.get('/portafolio', (req, res) => {
 
 app.get('/sugerencias', (req, res) => {
 
-    let sql = "SELECT * FROM sugerencias";
+    /* let sql = "SELECT * FROM sugerencias";
     conexion.query(sql, function(err, result){
         if (err) throw err;
             console.log(result);
             res.render('sugerencias', {
                 datos: result
             })
-    }) 
+    })  */
+
+    res.render('sugerencias')
 })
 
 app.get('/cerati', (req, res) => {
@@ -123,7 +125,7 @@ app.post('/contacto', (req, res) => {
         email: email,
     }
 
-    let sql = "INSERT INTO contacto set ?";
+    /* let sql = "INSERT INTO contacto set ?";
 
         conexion.query(sql, datos, function(err){
             if (err) throw err;
@@ -131,7 +133,11 @@ app.post('/contacto', (req, res) => {
                 //En esta instancia le mandamos el email al cliente
                 envioMail().catch(console.error);
                 res.render('contacto')
-        }) 
+        })  */
+
+        res.json({
+            prueba: 'Probando deploy sin conexion a la Database'
+        })
 })
 
 app.post('/sugerencias', (req, res) => {
@@ -145,26 +151,32 @@ app.post('/sugerencias', (req, res) => {
         descripcion: descripcion
     }
 
-    let sql = "INSERT INTO sugerencias set ?";
+    /* let sql = "INSERT INTO sugerencias set ?";
 
-        conexion.query(sql, datos, function(err){
+            conexion.query(sql, datos, function(err){
             if (err) throw err;
                 console.log(`1 registro insertado`);
                 res.redirect('/sugerencias') //Es la página a donde se va a enviar al cliente después de que envíe los datos//
-        }) 
+        }) */ 
+
+        res.render('sinDatos')
 })
 
 app.post('/delete', (req, res) => {
 
     console.log(req.body.idSugerencia);
 
-    let sql = "DELETE FROM sugerencias where idSugerencia = " + req.body.idSugerencia + "";
+    /* let sql = "DELETE FROM sugerencias where idSugerencia = " + req.body.idSugerencia + "";
     console.log(sql);
     conexion.query(sql, function(err, result){
         if (err) throw err;
             console.log('Datos eliminados: ' + result.affectedRows);
             res.render('sugerencias')
-    })  
+    })  */ 
+
+    res.json({
+        prueba: 'Probando deploy sin conexion a la Database'
+    })
 })
 
 app.post('/update', (req, res) => {
@@ -173,7 +185,7 @@ app.post('/update', (req, res) => {
     const descripcion = req.body.descripcion;
     const idSugerencia = req.body.idSugerencia;
 
-    let sql = "UPDATE sugerencias SET sugerencia = '" 
+    /* let sql = "UPDATE sugerencias SET sugerencia = '" 
     + sugerencia 
     + "', descripcion = '" 
     + descripcion 
@@ -184,9 +196,9 @@ app.post('/update', (req, res) => {
 
     conexion.query(sql, function(err, result){
         if (err) throw err;
-            /* console.log('Datos actualizados: ' + result.affectedRows); */
+            console.log('Datos actualizados: ' + result.affectedRows); 
             res.render('sugerencias')
-    }) 
+    }) */
 })
 
 //Servidor a la escucha de las peticiones

@@ -34,3 +34,7 @@ body {
 p {
     text-align: center;
 }
+
+.relleno {
+    padding-left: 5rem;
+}
