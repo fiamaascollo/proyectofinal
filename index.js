@@ -124,12 +124,10 @@ app.post('/contacto', (req, res) => {
                 console.log(`1 registro insertado`);
                 //En esta instancia le mandamos el email al cliente
                 envioMail().catch(console.error);
-                res.render('contacto')
+                res.render('enviado')
         })  */ 
 
-        res.json({
-            prueba: 'Probando deploy sin conexion a la Database'
-        }) 
+        res.render('enviado')
 })
 
 app.post('/sugerencias', (req, res) => {
