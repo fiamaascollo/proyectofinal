@@ -39,12 +39,9 @@ p {
     font-size: 1.2rem;
 }
 
-.relleno {
-    padding-left: 5rem;
-}
-
-.enviado {
+.respuesta {
     padding-top: 7rem;
     padding-bottom: 15rem;
     padding-left: 5rem;
 }
+
