@@ -44,7 +44,7 @@ conexion.connect((err) => {
 
 //Rutas de la aplicacion
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('inicio')
 })
 
 app.get('/acf', (req, res) => {
