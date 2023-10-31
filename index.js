@@ -68,9 +68,7 @@ app.get('/sugerencias', (req, res) => {
             res.render('sugerencias', {
                 datos: result
             })
-    })  
-
-    res.render('sugerencias') 
+    })   
 })
 
 app.get('/cerati', (req, res) => {
